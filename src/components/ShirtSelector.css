@@ -1,0 +1,227 @@
+/* 
+  =========================================
+  3D Carousel Section (Vanilla CSS Replacement)
+  =========================================
+*/
+
+.carousel-section {
+  background-image: url('/nova bro.webp');
+  /* Nova imagem de fundo premium da section */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  /* Ajustado para melhor contraste na imagem */
+  padding: 20px 16px 40px 16px;
+  margin-top: -40px;
+  /* Desliza por baixo das bordas arredondadas da Hero */
+  border-radius: 0 0 40px 40px;
+  /* Arredonda as bordas inferiores */
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  font-family: var(--font-sans);
+}
+
+/* 3D Main Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  margin: -65px auto 0 auto;
+  /* Overlap tridimensional premium sob a curva da Hero */
+}
+
+/* Base Card Style (Otimizado para Chassis de Celular de 420px) */
+.carousel-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 165px;
+  height: 231px;
+  /* Proporção exata de 10:14 */
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background-color: #121214;
+  box-shadow: none;
+  /* Removida qualquer sombra do card */
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (min-width: 480px) {
+  .carousel-card {
+    width: 175px;
+    height: 245px;
+  }
+}
+
+.carousel-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transition: transform 0.8s ease;
+}
+
+.carousel-card:hover .carousel-card-img {
+  transform: scale(1.05);
+}
+
+/* Gradient overlay */
+.carousel-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.3) 40%,
+      rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Category Badge (Semelhante ao design original) */
+.carousel-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  z-index: 5;
+}
+
+.carousel-badge span {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Card Typography */
+.carousel-card-info {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+  text-align: center;
+  z-index: 5;
+}
+
+.carousel-card-title {
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Buttons at the base */
+.carousel-nav {
+  display: flex;
+  gap: 16px;
+  margin-top: -50px;
+  /* Ajuste para descer as setas */
+  z-index: 40;
+}
+
+.carousel-btn {
+  background: rgba(255, 255, 255, 0.08);
+  /* Estilo Glassmorphism premium */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    0 0 15px rgba(170, 59, 255, 0.3);
+  border-color: rgba(170, 59, 255, 0.5);
+}
+
+.carousel-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Buy Button */
+.carousel-buy-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.carousel-card.active .carousel-buy-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.carousel-buy-btn:hover {
+  background: #fff;
+  color: #000;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+}
+
+.carousel-buy-btn:active {
+  transform: translateX(-50%) translateY(0);
+}

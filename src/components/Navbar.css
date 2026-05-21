@@ -1,0 +1,250 @@
+/* 
+  =========================================
+  Navbar & Menu Drawer CSS
+  =========================================
+*/
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: hsl(var(--text-primary));
+  text-transform: uppercase;
+}
+
+.logo-highlight {
+  background: linear-gradient(135deg, hsl(var(--accent-rose)) 0%, hsl(var(--bg-accent)) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+}
+
+/* Custom Hamburger */
+.navbar-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  height: 2px;
+  background-color: #aa3bff;
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hamburger line widths for dynamic look */
+.hamburger-line:nth-child(1) {
+  width: 22px;
+}
+.hamburger-line:nth-child(2) {
+  width: 16px;
+}
+.hamburger-line:nth-child(3) {
+  width: 20px;
+}
+
+/* Hamburger animations when menu is open */
+.navbar-hamburger.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  width: 22px;
+}
+
+.navbar-hamburger.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navbar-hamburger.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 22px;
+}
+
+/* 
+  =========================================
+  Glassmorphic Slide-Down Drawer
+  =========================================
+*/
+
+.menu-drawer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(6, 6, 9, 0.96);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-backdrop-filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.6s;
+  pointer-events: none;
+}
+
+.menu-drawer.drawer-active {
+  opacity: 1;
+  visibility: visible;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  pointer-events: all;
+}
+
+.drawer-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(170, 59, 255, 0.12) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  text-align: center;
+  z-index: 1;
+}
+
+.drawer-links li {
+  opacity: 0;
+  transform: translateY(15px);
+  filter: blur(8px);
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.menu-drawer.drawer-active .drawer-links li {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: 
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-drawer.drawer-active .drawer-links li:nth-child(1) { transition-delay: 0.12s; }
+.menu-drawer.drawer-active .drawer-links li:nth-child(2) { transition-delay: 0.19s; }
+.menu-drawer.drawer-active .drawer-links li:nth-child(3) { transition-delay: 0.26s; }
+.menu-drawer.drawer-active .drawer-links li:nth-child(4) { transition-delay: 0.33s; }
+
+.drawer-link {
+  font-family: 'Aerosoldier', var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: hsl(var(--text-primary));
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  letter-spacing: 0.05em;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-num {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #aa3bff;
+  letter-spacing: 0.1em;
+}
+
+.drawer-link:hover {
+  color: #aa3bff;
+  transform: translateY(-3px);
+  text-shadow: 0 0 15px rgba(170, 59, 255, 0.3);
+}
+
+.drawer-footer {
+  position: absolute;
+  bottom: 40px;
+  text-align: center;
+  width: 100%;
+  padding: 0 24px;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(4px);
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.menu-drawer.drawer-active .drawer-footer {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+  transition: 
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: 0.40s;
+}
+
+.drawer-footer p {
+  font-size: 0.58rem;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+/* Variante de destaque para o link de compra */
+.drawer-link-cta {
+  color: #aa3bff !important;
+  text-shadow: 0 0 20px rgba(170, 59, 255, 0.4);
+}
+
+.drawer-link-cta .link-num {
+  color: #aa3bff;
+}
+
+.drawer-link-cta:hover {
+  color: hsl(var(--text-primary)) !important;
+  text-shadow: 0 0 20px rgba(170, 59, 255, 0.6);
+}
+
