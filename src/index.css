@@ -210,6 +210,10 @@ p {
   background-clip: text;
 }
 
+.purple-text {
+  color: #aa3bff;
+}
+
 .gradient-btn {
   background: linear-gradient(135deg, hsl(var(--accent-rose)) 0%, hsl(var(--bg-accent)) 100%);
   border: none;
@@ -224,3 +228,259 @@ p {
   transform: scale(0.96);
   opacity: 0.9;
 }
+
+/* 
+  =========================================
+  Premium Scroll Reveal System (Fluid Animations with Blur)
+  =========================================
+*/
+
+.reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(32px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform;
+}
+
+/* Scale Variant */
+.reveal.reveal-scale {
+  transform: scale(0.94) translateY(24px);
+}
+
+/* Side slide variants */
+.reveal.reveal-left {
+  transform: translateX(-36px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(36px);
+}
+
+/* Active State */
+.reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate(0) scale(1);
+}
+
+/* Delays for staggered entrance animations */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+
+/* 
+  =========================================
+  Sleek Desktop Blocker & QR Code
+  =========================================
+*/
+
+.desktop-blocker {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: 999999;
+  color: #ffffff;
+  text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.blocker-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(170, 59, 255, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blocker-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 1;
+  max-width: 380px;
+  animation: fadeInBlocker 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInBlocker {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.blocker-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.blocker-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  color: #aa3bff;
+  filter: drop-shadow(0 0 16px rgba(170, 59, 255, 0.25));
+}
+
+.blocker-phone-svg {
+  color: #aa3bff;
+  animation: pulse-glow 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px rgba(170, 59, 255, 0.4));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(170, 59, 255, 0.8));
+    color: hsl(var(--accent-rose));
+  }
+}
+
+.blocker-scan-line {
+  position: absolute;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #aa3bff, transparent);
+  animation: scan 3s infinite ease-in-out;
+}
+
+@keyframes scan {
+  0% { top: 20%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 80%; opacity: 0; }
+}
+
+.blocker-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0;
+}
+
+.blocker-text {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: #8e8e93;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 12px;
+}
+
+.blocker-qr-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8);
+}
+
+.blocker-qr-svg {
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+.qr-corners span {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #aa3bff;
+}
+
+.qr-corners span:nth-child(1) { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.qr-corners span:nth-child(2) { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.qr-corners span:nth-child(3) { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.qr-corners span:nth-child(4) { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.blocker-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(170, 59, 255, 0.08);
+  border: 1px solid rgba(170, 59, 255, 0.2);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #c084fc;
+}
+
+.blocker-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c084fc;
+  animation: blink-dot 1.6s infinite;
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (min-width: 481px) {
+  .desktop-blocker {
+    display: flex !important;
+  }
+  .phone-chassis {
+    display: none !important;
+  }
+  .desktop-bg-glow {
+    display: none !important;
+  }
+  body {
+    background: #000000 !important;
+  }
+}
+
+

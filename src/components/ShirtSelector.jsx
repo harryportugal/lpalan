@@ -54,7 +54,7 @@ const CAROUSEL_ITEMS = [
   },
   {
     id: 9,
-    title: 'MC ALAN JR OFFICIAL',
+    title: 'DROP EXCLUSIVO',
     category: 'Corre',
     image: '/carrossel/9.webp',
   },
@@ -140,7 +140,7 @@ export default function ShirtSelector() {
   return (
     <section id="camisas" className="carousel-section">
       {/* Container Principal 3D */}
-      <div className="carousel-container">
+      <div className="carousel-container reveal reveal-scale">
         {itemsToRender.map(({ absoluteIndex, item, offset }) => {
           const isCenter = offset === 0;
 
@@ -174,7 +174,7 @@ export default function ShirtSelector() {
       </div>
 
       {/* Setinhas na parte inferior */}
-      <div className="carousel-nav">
+      <div className="carousel-nav reveal delay-200">
         <button
           onClick={handlePrev}
           aria-label="Anterior"

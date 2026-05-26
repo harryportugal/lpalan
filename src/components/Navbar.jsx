@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 
 export default function Navbar() {
@@ -7,6 +7,21 @@ export default function Navbar() {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.phone-content');
+    if (!scrollContainer) return;
+
+    if (menuOpen) {
+      scrollContainer.style.overflowY = 'hidden';
+    } else {
+      scrollContainer.style.overflowY = 'auto';
+    }
+
+    return () => {
+      scrollContainer.style.overflowY = 'auto';
+    };
+  }, [menuOpen]);
 
   return (
     <>
@@ -48,9 +63,6 @@ export default function Navbar() {
             </a>
           </li>
         </ul>
-        <div className="drawer-footer">
-          <p>© {new Date().getFullYear()} MC Alan Jr. Todos os direitos reservados.</p>
-        </div>
       </div>
     </>
   );

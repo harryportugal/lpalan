@@ -75,8 +75,17 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.7); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.7);
+  }
 }
 
 /* Título */
@@ -92,12 +101,10 @@
 }
 
 .cta-title-highlight {
-  background: linear-gradient(
-    135deg,
-    hsl(var(--accent-rose)) 0%,
-    hsl(var(--bg-accent)) 60%,
-    hsl(var(--accent-gold)) 100%
-  );
+  background: linear-gradient(135deg,
+      hsl(var(--accent-rose)) 0%,
+      hsl(var(--bg-accent)) 60%,
+      hsl(var(--accent-gold)) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -165,7 +172,7 @@
   cursor: pointer;
   overflow: hidden;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s ease;
+    box-shadow 0.25s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 1;
   white-space: nowrap;
@@ -276,4 +283,46 @@
   text-align: center;
   z-index: 1;
   margin-top: 8px;
+}
+
+/* Scroll Reveal para Elementos com Posição Absoluta */
+.cta-buy-btn.reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateX(-50%) translateY(32px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
+}
+
+.cta-buy-btn.reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Para o hover não anular a visibilidade */
+.cta-buy-btn.reveal.is-visible:hover {
+  transform: translateY(-2px) translateX(-50%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.cta-buy-btn.reveal.is-visible:active {
+  transform: scale(0.97) translateX(-50%);
+}
+
+.cta-socials.reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateX(-50%) translateY(24px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-socials.reveal.is-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(-50%) translateY(0);
 }
