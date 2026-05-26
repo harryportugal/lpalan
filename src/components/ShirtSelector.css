@@ -154,10 +154,12 @@
 }
 
 .carousel-btn {
-  background: rgba(255, 255, 255, 0.22);
-  /* Vidro mais espesso e visível */
-  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: rgba(0, 0, 0, 0.72);
+  /* Fundo preto denso para contraste supremo em qualquer parte da tela */
+  border: 1.5px solid rgba(170, 59, 255, 0.65);
+  /* Borda roxa neon brilhante */
   color: #ffffff;
+  /* Seta branca pura */
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -165,15 +167,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: 
+    0 4px 12px rgba(170, 59, 255, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-btn:hover {
   background: #aa3bff;
-  /* Roxo neon ao passar o mouse */
+  /* Roxo neon sólido */
   color: #ffffff;
   transform: translateY(-2px) scale(1.05);
   box-shadow:
@@ -183,31 +187,40 @@
 }
 
 .carousel-btn:active {
-  transform: translateY(0) scale(0.95);
+  background: #aa3bff !important;
+  border-color: #aa3bff !important;
+  color: #ffffff !important;
+  transform: translateY(0) scale(0.92);
 }
 
 /* Buy Button */
 .carousel-buy-btn {
   position: absolute;
-  bottom: 10px;
+  bottom: 12px;
   left: 50%;
   transform: translateX(-50%) translateY(15px);
   opacity: 0;
   pointer-events: none;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 8px 20px;
+  background: rgba(0, 0, 0, 0.72);
+  /* Fundo preto denso igual às setas */
+  border: 1.5px solid rgba(170, 59, 255, 0.65);
+  /* Borda roxa neon brilhante */
+  color: #ffffff;
+  /* Texto branco puro */
+  padding: 8px 24px;
   border-radius: 9999px;
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 700;
+  /* Peso de fonte destacado */
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+    0 4px 12px rgba(170, 59, 255, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.5);
   z-index: 10;
   cursor: pointer;
 }
@@ -219,12 +232,17 @@
 }
 
 .carousel-buy-btn:hover {
-  background: #fff;
-  color: #000;
+  background: #aa3bff;
+  /* Roxo neon sólido no hover */
+  border-color: #aa3bff;
+  color: #ffffff;
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 24px rgba(170, 59, 255, 0.55);
 }
 
 .carousel-buy-btn:active {
-  transform: translateX(-50%) translateY(0);
+  background: #aa3bff !important;
+  border-color: #aa3bff !important;
+  color: #ffffff !important;
+  transform: translateX(-50%) translateY(0) scale(0.95);
 }
