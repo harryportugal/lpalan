@@ -71,6 +71,12 @@ export default function ShirtSelector() {
   // Isso garante que o carrossel nunca "rebobine" bruscamente.
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Estados para suportar gestos de deslizar o dedo (swipe) no mobile
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  const minSwipeDistance = 50; // Distância mínima em px para acionar a rotação
+
   const handleNext = useCallback(() => {
     setCurrentIndex((prev) => prev + 1);
   }, []);
@@ -78,6 +84,29 @@ export default function ShirtSelector() {
   const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => prev - 1);
   }, []);
+
+  // Handlers para o gesto de toque/deslizar
+  const onTouchStart = (e) => {
+    setTouchEnd(0);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+  };
 
   // Suporte a setas do teclado para UX melhorada
   useEffect(() => {
@@ -140,7 +169,12 @@ export default function ShirtSelector() {
   return (
     <section id="camisas" className="carousel-section">
       {/* Container Principal 3D */}
-      <div className="carousel-container reveal reveal-scale">
+      <div 
+        className="carousel-container reveal reveal-scale"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {itemsToRender.map(({ absoluteIndex, item, offset }) => {
           const isCenter = offset === 0;
 
