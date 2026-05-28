@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ShirtSelector from './components/ShirtSelector';
 import BentoGrid from './components/BentoGrid';
-import CTAFinal from './components/CTAFinal';
 import './App.css';
 
 function App() {
@@ -125,7 +124,6 @@ function App() {
           <Hero />
           <ShirtSelector />
           <BentoGrid />
-          <CTAFinal />
         </div>
       </div>
     </>
