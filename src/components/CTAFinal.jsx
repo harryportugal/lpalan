@@ -52,46 +52,48 @@ export default function CTAFinal() {
   };
 
   return (
-    <section id="comprar" className="cta-section">
-      {/* Definição do Gradiente compartilhado para os SVGs */}
-      <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
-        <defs>
-          <linearGradient id="green-yellow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#22c55e" />
-            <stop offset="100%" stopColor="#facc15" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* Glow de fundo */}
-      <div className="cta-glow-top" />
-      <div className="cta-glow-bottom" />
-
-
-      {/* Botão de compra */}
-      <button className="cta-buy-btn reveal" onClick={handleBuy}>
-        <span className="cta-buy-btn-pulse" />
-        <span className="cta-buy-btn-text">Comprar Agora</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
+    <div className="cta-wrapper">
+      <section id="comprar" className="cta-section">
+        {/* Definição do Gradiente compartilhado para os SVGs */}
+        <svg width="0" height="0" style={{ position: 'absolute', pointerEvents: 'none' }}>
+          <defs>
+            <linearGradient id="green-yellow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#22c55e" />
+              <stop offset="100%" stopColor="#facc15" />
+            </linearGradient>
+          </defs>
         </svg>
-      </button>
 
-      {/* Redes sociais — só ícones */}
-      <div className="cta-socials reveal delay-200">
-        {SOCIAL_LINKS.map((social) => (
-          <a
-            key={social.id}
-            href={social.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-social-btn"
-            aria-label={social.label}
-          >
-            {social.icon}
-          </a>
-        ))}
-      </div>
-    </section>
+        {/* Glow de fundo */}
+        <div className="cta-glow-top" />
+        <div className="cta-glow-bottom" />
+
+
+        {/* Botão de compra */}
+        <button className="cta-buy-btn reveal" onClick={handleBuy}>
+          <span className="cta-buy-btn-pulse" />
+          <span className="cta-buy-btn-text">Comprar Agora</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        {/* Redes sociais — só ícones */}
+        <div className="cta-socials reveal delay-200">
+          {SOCIAL_LINKS.map((social) => (
+            <a
+              key={social.id}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-social-btn"
+              aria-label={social.label}
+            >
+              {social.icon}
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

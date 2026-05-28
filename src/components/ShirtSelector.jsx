@@ -167,63 +167,65 @@ export default function ShirtSelector() {
   };
 
   return (
-    <section id="camisas" className="carousel-section">
-      {/* Container Principal 3D */}
-      <div 
-        className="carousel-container reveal reveal-scale"
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        {itemsToRender.map(({ absoluteIndex, item, offset }) => {
-          const isCenter = offset === 0;
+    <div className="carousel-wrapper">
+      <section id="camisas" className="carousel-section">
+        {/* Container Principal 3D */}
+        <div 
+          className="carousel-container reveal reveal-scale"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {itemsToRender.map(({ absoluteIndex, item, offset }) => {
+            const isCenter = offset === 0;
 
-          return (
-            <div
-              key={absoluteIndex} // A CHAVE AQUI É O ÍNDICE ABSOLUTO. Isso é o segredo do loop perfeito.
-              onClick={() => setCurrentIndex(currentIndex + offset)}
-              className={`carousel-card ${isCenter ? 'active' : ''}`}
-              style={getCardStyle(offset)}
-            >
-              {/* Imagem de Fundo */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="carousel-card-img"
-                draggable={false}
-              />
-              {/* Botão de Compra */}
-              <button 
-                className="carousel-buy-btn"
-                onClick={(e) => {
-                  e.stopPropagation(); // Evita que o clique no botão mude o slide
-                  alert(`Redirecionando para a compra de: ${item.title}`);
-                }}
+            return (
+              <div
+                key={absoluteIndex} // A CHAVE AQUI É O ÍNDICE ABSOLUTO. Isso é o segredo do loop perfeito.
+                onClick={() => setCurrentIndex(currentIndex + offset)}
+                className={`carousel-card ${isCenter ? 'active' : ''}`}
+                style={getCardStyle(offset)}
               >
-                Comprar
-              </button>
-            </div>
-          );
-        })}
-      </div>
+                {/* Imagem de Fundo */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="carousel-card-img"
+                  draggable={false}
+                />
+                {/* Botão de Compra */}
+                <button 
+                  className="carousel-buy-btn"
+                  onClick={(e) => {
+                    e.stopPropagation(); // Evita que o clique no botão mude o slide
+                    alert(`Redirecionando para a compra de: ${item.title}`);
+                  }}
+                >
+                  Comprar
+                </button>
+              </div>
+            );
+          })}
+        </div>
 
-      {/* Setinhas na parte inferior */}
-      <div className="carousel-nav reveal delay-200">
-        <button
-          onClick={handlePrev}
-          aria-label="Anterior"
-          className="carousel-btn"
-        >
-          <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
-        </button>
-        <button
-          onClick={handleNext}
-          aria-label="Próximo"
-          className="carousel-btn"
-        >
-          <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
-        </button>
-      </div>
-    </section>
+        {/* Setinhas na parte inferior */}
+        <div className="carousel-nav reveal delay-200">
+          <button
+            onClick={handlePrev}
+            aria-label="Anterior"
+            className="carousel-btn"
+          >
+            <ChevronLeft className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+          <button
+            onClick={handleNext}
+            aria-label="Próximo"
+            className="carousel-btn"
+          >
+            <ChevronRight className="w-5 h-5" strokeWidth={1.5} />
+          </button>
+        </div>
+      </section>
+    </div>
   );
 }

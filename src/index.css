@@ -163,7 +163,7 @@ html, body {
   overflow-x: hidden;
   position: relative;
   scroll-behavior: smooth;
-  background-color: #ffffff;
+  background-color: #000000;
   
   /* Custom modern thin scrollbar */
   scrollbar-width: none; /* Firefox */

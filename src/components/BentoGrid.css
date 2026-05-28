@@ -7,7 +7,7 @@
   flex-shrink: 0;
   box-sizing: border-box;
   font-family: var(--font-sans);
-  z-index: 0;
+  z-index: 3; /* Garante que fique acima da Hero */
   position: relative;
 }
 
