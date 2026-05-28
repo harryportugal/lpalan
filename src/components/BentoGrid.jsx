@@ -55,17 +55,9 @@ export default function BentoGrid() {
         const progress = Math.min(Math.max(scrolled / totalScroll, 0), 1);
 
         // Aplica o zoom na grid
-        // Começa em scale 1 e vai até 9 (zoom extremo no centro)
-        const scale = 1 + progress * 8;
+        // Começa em scale 1 e vai até 16 (zoom extremo no centro que joga os cards para fora da tela)
+        const scale = 1 + progress * 15;
         grid.style.transform = `scale(${scale})`;
-
-        // Desfoca e esmaece os cartões à medida que o zoom avança
-        const items = grid.querySelectorAll('.bento-item');
-        items.forEach((item) => {
-          // Esmaece os itens rapidamente no zoom (foca no fundo branco por volta de 70% do progresso)
-          const opacity = Math.max(1 - progress * 1.5, 0);
-          item.style.opacity = opacity;
-        });
 
         // Controla o surgimento suave da CTA no fundo branco
         if (progress >= 0.75) {
