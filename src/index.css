@@ -3,6 +3,7 @@
   src: url('/fonts/Aerosoldier_PERSONAL_USE_ONLY.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -10,6 +11,7 @@
   src: url('/fonts/AerosoldierBasic_PERSONAL_USE_ONLY.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +19,7 @@
   src: url('/fonts/AerosoldierDrip_PERSONAL_USE_ONLY.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -24,6 +27,7 @@
   src: url('/fonts/AerosoldierSpray_PERSONAL_USE_ONLY.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 /* 

@@ -192,6 +192,7 @@ export default function ShirtSelector() {
                   alt={item.title}
                   className="carousel-card-img"
                   draggable={false}
+                  loading="lazy"
                 />
                 {/* Botão de Compra */}
                 <button 
